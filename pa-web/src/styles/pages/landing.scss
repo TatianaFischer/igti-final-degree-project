@@ -7,7 +7,9 @@
 
 #page-landing-main {
   height: 100vh;
-  background: #15C3D6;
+  // background: #15C3D6;
+  background: #15D6A8;
+
   display: grid;
   align-items: center;
   grid-template-rows: 1fr 1fr;
@@ -38,7 +40,10 @@
 
 #page-landing-logo { 
   height: 100vh; 
-  background: #FF669D;
+  // background: #FF669D;
+  background: #FF9696;
+
+
   position: relative;
 
   section:first-child {
