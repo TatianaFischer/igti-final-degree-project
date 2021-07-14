@@ -1,0 +1,57 @@
+#page-map {
+  width:100vw;
+  height: 100vh;
+
+  position: relative;
+  display: flex;
+
+  aside {
+    width: 440px;
+    background: #15D6A8;
+    padding: 80px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    header {
+  
+     display: grid;
+     grid-template-rows: 1fr 1fr;
+     height: 200px; 
+ 
+      p {
+        font-size: 1rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 700;      
+      }  
+
+    } 
+  }
+
+  .create-point {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+
+    width: 64px;
+    height: 64px;
+    background:#FF9696;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: filter 0.2s;
+    &:hover {
+    filter: brightness(0.8)
+  }
+  }
+
+
+}
