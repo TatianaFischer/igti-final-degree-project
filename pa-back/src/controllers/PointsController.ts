@@ -3,6 +3,14 @@ import { getRepository } from 'typeorm';
 import Point from '../models/Point';
 
 export default {
+  async index(req: Request, res: Response) {
+    const pointsRepository = getRepository(Point);
+
+    const points = await pointsRepository.find();
+
+    return res.json(points);
+  },
+
   async create(req: Request, res: Response) {
     const {
       name,
