@@ -1,32 +1,31 @@
-import {Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('points')
 export default class Point {
-  
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
   name: string;
 
-   @Column()
+  @Column()
   latitude: number;
 
-   @Column()
+  @Column()
   longitude: number;
 
-   @Column()
+  @Column()
   about: string;
 
-   @Column()
+  @Column()
   instructions: string;
 
-   @Column()
+  @Column()
   wastes_types: string;
 
-   @Column()
+  @Column()
   others_actions: string;
 
-   @Column()
+  @Column()
   opening_hours: string;
 }
