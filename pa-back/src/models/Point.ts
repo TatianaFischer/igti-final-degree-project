@@ -36,7 +36,9 @@ export default class Point {
   @Column()
   opening_hours: string;
 
-  @OneToMany(() => Image, image => image.point)
+  @OneToMany(() => Image, image => image.point, {
+    cascade: ['insert', 'update'],
+  })
   @JoinColumn({ name: 'point_id' })
   images: Image[];
 }

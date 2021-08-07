@@ -35,6 +35,11 @@ export default {
 
     const pointsRepository = getRepository(Point);
 
+    const requestImages = req.files as Express.Multer.File[];
+    const images = requestImages.map(image => {
+      return { path: image.filename };
+    });
+
     const point = pointsRepository.create({
       name,
       latitude,
@@ -44,6 +49,7 @@ export default {
       wastes_types,
       others_actions,
       opening_hours,
+      images,
     });
 
     await pointsRepository.save(point);
