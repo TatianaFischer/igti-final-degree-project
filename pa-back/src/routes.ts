@@ -1,12 +1,16 @@
 import { Router } from 'express';
+import multer from 'multer';
+
+import uploadConfig from './config/upload';
 import PointsController from './controllers/PointsController';
 
 const routes = Router();
+const upload = multer(uploadConfig);
 
 //index, show, create, update, delete
 
 routes.get('/points', PointsController.index);
 routes.get('/points/:id', PointsController.show);
-routes.post('/points', PointsController.create);
+routes.post('/points', upload.array('images'), PointsController.create);
 
 export default routes;

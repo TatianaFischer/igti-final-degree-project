@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
+import Image from './Image';
 
 @Entity('points')
 export default class Point {
@@ -28,4 +35,8 @@ export default class Point {
 
   @Column()
   opening_hours: string;
+
+  @OneToMany(() => Image, image => image.point)
+  @JoinColumn({ name: 'point_id' })
+  images: Image[];
 }
