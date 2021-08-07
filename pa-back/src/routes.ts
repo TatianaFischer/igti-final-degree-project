@@ -6,6 +6,7 @@ const routes = Router();
 //index, show, create, update, delete
 
 routes.get('/points', PointsController.index);
+routes.get('/points/:id', PointsController.show);
 routes.post('/points', PointsController.create);
 
 export default routes;

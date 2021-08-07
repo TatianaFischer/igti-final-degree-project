@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { request, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import Point from '../models/Point';
 
@@ -9,6 +9,16 @@ export default {
     const points = await pointsRepository.find();
 
     return res.json(points);
+  },
+
+  async show(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const pointsRepository = getRepository(Point);
+
+    const point = await pointsRepository.findOneOrFail(id);
+
+    return res.json(point);
   },
 
   async create(req: Request, res: Response) {
