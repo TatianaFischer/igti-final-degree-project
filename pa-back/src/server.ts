@@ -34,7 +34,9 @@ app.post('/points', async (req, res) => {
   });
 
   await pointsRepository.save(point);
-  return res.json(point);
+  return res.status(201).json(point);
+
+  //status 201: create
 });
 
 app.listen(3333);
