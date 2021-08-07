@@ -1,14 +1,17 @@
 import { request, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
+import pointView from '../views/points_view';
 import Point from '../models/Point';
 
 export default {
   async index(req: Request, res: Response) {
     const pointsRepository = getRepository(Point);
 
-    const points = await pointsRepository.find();
+    const points = await pointsRepository.find({
+      relations: ['images'],
+    });
 
-    return res.json(points);
+    return res.json(pointView.renderMany(points));
   },
 
   async show(req: Request, res: Response) {
@@ -16,9 +19,11 @@ export default {
 
     const pointsRepository = getRepository(Point);
 
-    const point = await pointsRepository.findOneOrFail(id);
+    const point = await pointsRepository.findOneOrFail(id, {
+      relations: ['images'],
+    });
 
-    return res.json(point);
+    return res.json(pointView.render(point));
   },
 
   async create(req: Request, res: Response) {
