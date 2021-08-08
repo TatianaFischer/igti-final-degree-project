@@ -1,6 +1,7 @@
 import { request, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import pointView from '../views/points_view';
+import * as Yup from 'yup';
 import Point from '../models/Point';
 
 export default {
@@ -45,7 +46,7 @@ export default {
       return { path: image.filename };
     });
 
-    const point = pointsRepository.create({
+    const data = {
       name,
       latitude,
       longitude,
@@ -55,7 +56,29 @@ export default {
       others_actions,
       opening_hours,
       images,
+    };
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required('Nome obrigatório'),
+      latitude: Yup.number().required('latitude obrigatório'),
+      longitude: Yup.number().required('longitude obrigatório'),
+      about: Yup.string().required().max(300),
+      instructions: Yup.string().required('instruções obrigatório'),
+      wastes_types: Yup.string().required('Tipos de resíduos obrigatório'),
+      others_actions: Yup.string(),
+      opening_hours: Yup.string().required('Horário obrigatório'),
+      images: Yup.array(
+        Yup.object().shape({
+          path: Yup.string().required(),
+        }),
+      ),
     });
+
+    await schema.validate(data, {
+      abortEarly: false,
+    });
+
+    const point = pointsRepository.create(data);
 
     await pointsRepository.save(point);
     return res.status(201).json(point);
