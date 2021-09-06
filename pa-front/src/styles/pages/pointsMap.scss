@@ -1,57 +1,82 @@
 #page-map {
-  width:100vw;
+  width: 100vw;
   height: 100vh;
 
   position: relative;
   display: flex;
 
-  aside {
+  .menuAside {
+    width: 270px;
+    background: #ff9696;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+
+    .icon-menu {
+      width: 120px;
+      height: 60px;
+      background: #ff9696;
+      border-radius: 7px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition: filter 0.2s;
+      &:hover {
+        filter: brightness(0.8);
+      }
+
+      span {
+        margin: 10px;
+      }
+    }
+  }
+  .logoDescriptionAside {
     width: 440px;
-    background: #15D6A8;
+    background: #ff9696;
     padding: 80px;
-  
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 
     header {
-  
-     display: grid;
-     grid-template-rows: 1fr 1fr;
-     height: 200px; 
- 
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      height: 200px;
+      img {
+        width: 300px;
+      }
+
       p {
         font-size: 1rem;
       }
 
       h3 {
         font-size: 1.2rem;
-        font-weight: 700;      
-      }  
-
-    } 
+        font-weight: 700;
+      }
+    }
   }
 
-  .create-point {
-    position: absolute;
-    right: 40px;
-    bottom: 40px;
-
-    width: 64px;
-    height: 64px;
-    background:#FF9696;
-    border-radius: 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  .overlayView {
+    width: 120px;
+    height: 50px;
+    color: black;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 0 9px 9px 9px;
+    text-align: center;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     transition: filter 0.2s;
     &:hover {
-    filter: brightness(0.8)
+      filter: brightness(0.9);
+    }
   }
-  }
-
-
 }

@@ -1,13 +1,12 @@
 import 'leaflet/dist/leaflet.css';
 import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiHome } from 'react-icons/fi';
 
 import {
   GoogleMap,
   LoadScript,
   Marker,
-  InfoWindow,
   OverlayView,
 } from '@react-google-maps/api';
 
@@ -50,20 +49,30 @@ const onClicktoDetails = () => {
 function PointsMap() {
   return (
     <div id="page-map">
-      <aside>
+      <aside className="menuAside">
+        <Link to="/" className="icon-menu">
+          <FiHome size={28} color="#fff" />
+          <span>Início</span>
+        </Link>
+        <Link to="/cadastro" className="icon-menu">
+          <FiPlus size={32} color="#fff" />
+          <span>Novo</span>
+        </Link>
+      </aside>
+
+      <aside className="logoDescriptionAside">
         <header>
           <img src={logo} alt="Logo marcar Cyclo" />
           <p>
             Selecione no mapa o restaurante e veja quais resíduos são coletados.
           </p>
         </header>
-
-        <ul>
+        {/* <ul>
           <h3>Quais residuos podem ser coletados?</h3>
           <li>Orgânicos</li>
           <li>Sólidos (papel, latas, plásticos...)</li>
           <li>Eletrônicos</li>
-        </ul>
+        </ul> */}
       </aside>
 
       <LoadScript googleMapsApiKey={`${googleMapsAPIKey}`}>
@@ -72,27 +81,13 @@ function PointsMap() {
           {markersData.map(marker => {
             return (
               <>
-                <Marker position={marker.position} title="Porto Alegre">
+                <Marker position={marker.position} title={marker.title}>
                   {marker.title ? (
                     <OverlayView
                       position={marker.position}
                       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                     >
-                      <div
-                        style={{
-                          width: '100px',
-                          height: '50px',
-                          color: 'black',
-                          background: 'white',
-                          border: '1px solid #ccc',
-                          padding: '7px',
-
-                          cursor: 'pointer',
-                          borderRadius: '8px',
-                          textAlign: 'center',
-                        }}
-                        onClick={onClicktoDetails}
-                      >
+                      <div className="overlayView" onClick={onClicktoDetails}>
                         🡴<b> {marker.title}</b> ♻<p> {marker.description}</p>
                       </div>
                     </OverlayView>
@@ -103,10 +98,6 @@ function PointsMap() {
           })}
         </GoogleMap>
       </LoadScript>
-
-      <Link to="/cadastro" className="create-point">
-        <FiPlus size={32} color="#fff" />
-      </Link>
     </div>
   );
 }
