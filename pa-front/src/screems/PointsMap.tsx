@@ -31,6 +31,7 @@ const markersData = [
     },
 
     title: 'Casa',
+    description: 'Tampinha, pilhas, lâmpadas',
   },
   {
     position: {
@@ -38,6 +39,7 @@ const markersData = [
       lng: -51.2237419,
     },
     title: 'Santa Casa',
+    description: 'Orgânicos, papel, lata',
   },
 ];
 
@@ -79,17 +81,19 @@ function PointsMap() {
                       <div
                         style={{
                           width: '100px',
+                          height: '50px',
                           color: 'black',
                           background: 'white',
                           border: '1px solid #ccc',
-                          padding: 15,
+                          padding: '7px',
+
                           cursor: 'pointer',
                           borderRadius: '8px',
                           textAlign: 'center',
                         }}
                         onClick={onClicktoDetails}
                       >
-                        {marker.title}📍
+                        🡴<b> {marker.title}</b> ♻<p> {marker.description}</p>
                       </div>
                     </OverlayView>
                   ) : null}
