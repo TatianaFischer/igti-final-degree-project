@@ -8,7 +8,7 @@ import {
   LoadScript,
   Marker,
   InfoWindow,
-  Circle,
+  OverlayView,
 } from '@react-google-maps/api';
 
 import '../styles/pages/pointsMap.scss';
@@ -42,7 +42,9 @@ const markersData = [
 ];
 
 const googleMapsAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
+const onClicktoDetails = () => {
+  console.log('teste');
+};
 function PointsMap() {
   return (
     <div id="page-map">
@@ -68,7 +70,30 @@ function PointsMap() {
           {markersData.map(marker => {
             return (
               <>
-                <Marker position={marker.position} title="Porto Alegre" />{' '}
+                <Marker position={marker.position} title="Porto Alegre">
+                  {marker.title ? (
+                    <OverlayView
+                      position={marker.position}
+                      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                    >
+                      <div
+                        style={{
+                          width: '100px',
+                          color: 'black',
+                          background: 'white',
+                          border: '1px solid #ccc',
+                          padding: 15,
+                          cursor: 'pointer',
+                          borderRadius: '8px',
+                          textAlign: 'center',
+                        }}
+                        onClick={onClicktoDetails}
+                      >
+                        {marker.title}📍
+                      </div>
+                    </OverlayView>
+                  ) : null}
+                </Marker>
               </>
             );
           })}
