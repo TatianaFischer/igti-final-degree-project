@@ -1,7 +1,9 @@
 import 'leaflet/dist/leaflet.css';
 import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
+
 import { FiPlus, FiHome } from 'react-icons/fi';
+import { BiCurrentLocation } from 'react-icons/bi';
 
 import {
   GoogleMap,
@@ -54,7 +56,7 @@ function PointsMap() {
           <FiHome size={28} color="#fff" />
           <span>Início</span>
         </Link>
-        <Link to="/cadastro" className="icon-menu">
+        <Link to="/restaurante/cadastro" className="icon-menu">
           <FiPlus size={32} color="#fff" />
           <span>Novo</span>
         </Link>
@@ -73,26 +75,39 @@ function PointsMap() {
           <li>Sólidos (papel, latas, plásticos...)</li>
           <li>Eletrônicos</li>
         </ul> */}
+        <div>
+          <label>Pesquise pelo endereço:</label>
+          <div style={{ display: 'flex', color: 'black' }}>
+            <input />
+            <span
+              style={{ backgroundColor: 'white', borderRadius: '0 5px 5px 0' }}
+            >
+              <BiCurrentLocation />
+            </span>
+          </div>
+        </div>
       </aside>
 
       <LoadScript googleMapsApiKey={`${googleMapsAPIKey}`}>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
           <></>
           {markersData.map(marker => {
             return (
               <>
-                <Marker position={marker.position} title={marker.title}>
-                  {marker.title ? (
-                    <OverlayView
-                      position={marker.position}
-                      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                    >
-                      <div className="overlayView" onClick={onClicktoDetails}>
-                        🡴<b> {marker.title}</b> ♻<p> {marker.description}</p>
-                      </div>
-                    </OverlayView>
-                  ) : null}
-                </Marker>
+                <Link to="/restaurante/:id" className="pointDetailsLink">
+                  <Marker position={marker.position} title={marker.title}>
+                    {marker.title ? (
+                      <OverlayView
+                        position={marker.position}
+                        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                      >
+                        <div className="overlayView" onClick={onClicktoDetails}>
+                          🡴<b> {marker.title}</b> ♻<p> {marker.description}</p>
+                        </div>
+                      </OverlayView>
+                    ) : null}
+                  </Marker>
+                </Link>
               </>
             );
           })}

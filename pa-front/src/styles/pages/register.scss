@@ -1,0 +1,237 @@
+#page-register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.menuAside {
+  width: 350px;
+  background: #ff9696;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 40px;
+
+  button {
+    border: none;
+    color: white;
+  }
+
+  .icon-menu {
+    width: 120px;
+    height: 60px;
+    background: #ff9696;
+    border-radius: 7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: filter 0.2s;
+    &:hover {
+      filter: brightness(0.8);
+    }
+
+    span {
+      margin: 10px;
+    }
+  }
+}
+.logoDescriptionAside {
+  width: 440px;
+  background: #ff9696;
+  padding: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  header {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 200px;
+    img {
+      width: 300px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
+  input {
+    border: white;
+    border-radius: 5px 0 0 5px;
+    padding: 5px 5px;
+    width: 100%;
+  }
+}
+
+main {
+  ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 5px;
+  }
+  ::-webkit-scrollbar {
+    width: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 5px;
+  }
+
+  form.register-form {
+    width: 60vw;
+    max-height: 90vh;
+    background: #ffffff;
+    padding: 64px 80px;
+    margin: 5% 8%;
+
+    position: initial;
+    overflow-y: scroll;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  form.register-form fieldset {
+    border: 0;
+  }
+
+  form.register-form fieldset + fieldset {
+    margin-top: 50px;
+  }
+
+  form.register-form fieldset legend {
+    width: 100%;
+
+    font-size: 24px;
+    line-height: 34px;
+    color: #5c8599;
+    font-weight: 700;
+    border-bottom: 1px solid #d3e2e5;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+  }
+
+  ::placeholder {
+    opacity: 0.4;
+  }
+
+  form.register-form .input-block + .input-block {
+    margin-top: 24px;
+  }
+
+  form.register-form .input-block label {
+    display: flex;
+    color: #8fa7b3;
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
+
+  form.register-form .input-block label span {
+    font-size: 14px;
+    color: #8fa7b3;
+    margin-left: 24px;
+    line-height: 24px;
+  }
+
+  form.register-form .input-block input,
+  form.register-form .input-block textarea {
+    width: 80%;
+    background: #f5f8fa;
+    border: 1px solid #d3e2e5;
+    border-radius: 7px;
+    outline: none;
+    color: #5c8599;
+  }
+
+  form.register-form .input-block input {
+    height: 40px;
+    padding: 0 16px;
+  }
+
+  form.register-form .input-block textarea {
+    min-height: 120px;
+    max-height: 240px;
+    resize: vertical;
+    padding: 16px;
+    line-height: 28px;
+  }
+
+  form.register-form .input-block .new-image {
+    width: 5vw;
+    height: 5vw;
+    background: #f5f8fa;
+    border: 1px dashed #96d2f0;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+
+  form.register-form .input-block .button-select {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+  }
+
+  form.register-form .input-block .button-select button {
+    width: 80%;
+    height: 40px;
+    background: #f5f8fa;
+    border: 1px solid #d3e2e5;
+    color: #5c8599;
+    cursor: pointer;
+  }
+
+  form.register-form .input-block .button-select button.active {
+    background: #edfff6;
+    border: 1px solid #a1e9c5;
+    color: #15d6a8;
+  }
+
+  form.register-form .input-block .button-select button:first-child {
+    border-radius: 7px;
+  }
+
+  form.register-form .input-block .button-select button:last-child {
+    border-left: 0;
+    border-radius: 7px;
+  }
+
+  form.register-form button.confirm-button {
+    margin-top: 64px;
+
+    width: 40%;
+    height: 64px;
+    border: 0;
+    cursor: pointer;
+    background: #15d6a8;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 0.2s;
+  }
+
+  form.register-form button.confirm-button svg {
+    margin-right: 16px;
+  }
+
+  form.register-form button.confirm-button:hover {
+    background: #15d6a8;
+  }
+}

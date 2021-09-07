@@ -1,0 +1,256 @@
+#page-point-details {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow-y: hidden;
+}
+
+.menuAside {
+  width: 350px;
+  background: #ff9696;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 40px;
+
+  button {
+    border: none;
+    color: white;
+  }
+
+  .icon-menu {
+    width: 120px;
+    height: 60px;
+    background: #ff9696;
+    border-radius: 7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: filter 0.2s;
+    &:hover {
+      filter: brightness(0.8);
+    }
+
+    span {
+      margin: 10px;
+    }
+  }
+}
+.logoDescriptionAside {
+  width: 440px;
+  background: #ff9696;
+  padding: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  header {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 200px;
+    img {
+      width: 300px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
+  input {
+    border: white;
+    border-radius: 5px 0 0 5px;
+    padding: 5px 5px;
+    width: 100%;
+  }
+}
+main {
+  flex: 1;
+  ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 5px;
+  }
+  ::-webkit-scrollbar {
+    width: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 5px;
+  }
+}
+
+.point-details {
+  width: 60vw;
+  max-height: 90vh;
+  background: #ffffff;
+  padding: 64px 80px;
+  margin: 5% 8%;
+
+  position: initial;
+  overflow-y: scroll;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.point-details > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.point-details .images {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 16px;
+
+  margin: 16px 40px 0;
+}
+
+.point-details .images button {
+  border: 0;
+  height: 88px;
+  background: none;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  outline: none;
+
+  opacity: 0.6;
+}
+
+.point-details .images button.active {
+  opacity: 1;
+}
+
+.point-details .images button img {
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+}
+
+.point-details .point-details-content {
+  padding: 80px;
+}
+
+.point-details .point-details-content h1 {
+  color: #4d6f80;
+  font-size: 54px;
+  line-height: 54px;
+  margin-bottom: 8px;
+}
+
+.point-details .point-details-content p {
+  line-height: 28px;
+  color: #5c8599;
+  margin-top: 24px;
+}
+
+.point-details .point-details-content .map-container {
+  margin-top: 64px;
+  background: #e6f7fb;
+  border: 1px solid #b3dae2;
+  border-radius: 20px;
+}
+
+.point-details .point-details-content .map-container footer {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.point-details .point-details-content .map-container footer a {
+  line-height: 24px;
+  color: #0089a5;
+  text-decoration: none;
+}
+
+.point-details .point-details-content .map-container .leaflet-container {
+  border-bottom: 1px solid #dde3f0;
+  border-radius: 20px;
+}
+
+.point-details .point-details-content hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: #d3e2e6;
+  margin: 64px 0;
+}
+
+.point-details .point-details-content h2 {
+  font-size: 36px;
+  line-height: 46px;
+  color: #4d6f80;
+}
+
+.point-details .point-details-content .open-details {
+  margin-top: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+}
+
+.point-details .point-details-content .open-details div {
+  padding: 32px 24px;
+  border-radius: 20px;
+  line-height: 28px;
+}
+
+.point-details .point-details-content .open-details div svg {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.point-details .point-details-content .open-details div.hour {
+  background: linear-gradient(149.97deg, #e6f7fb 8.13%, #ffffff 92.67%);
+  border: 1px solid #b3dae2;
+  color: #5c8599;
+}
+
+.point-details .point-details-content .open-details div.open-on-weekends {
+  background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
+  border: 1px solid #a1e9c5;
+  color: #37c77f;
+}
+
+.point-details .point-details-content button.contact-button {
+  margin-top: 64px;
+
+  width: 100%;
+  height: 64px;
+  border: 0;
+  cursor: pointer;
+  background: #3cdc8c;
+  border-radius: 20px;
+  color: #ffffff;
+  font-weight: 800;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+.point-details .point-details-content button.contact-button svg {
+  margin-right: 16px;
+}
+
+.point-details .point-details-content button.contact-button:hover {
+  background: #36cf82;
+}

@@ -62,6 +62,13 @@
         font-weight: 700;
       }
     }
+
+    input {
+      border: white;
+      border-radius: 5px 0 0 5px;
+      padding: 5px 5px;
+      width: 100%;
+    }
   }
 
   .overlayView {
