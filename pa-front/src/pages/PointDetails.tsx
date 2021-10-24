@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from '../images/logo.svg';
 import { FiClock, FiHome, FiArrowLeft } from 'react-icons/fi';
 

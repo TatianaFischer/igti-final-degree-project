@@ -1,9 +1,10 @@
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Landing from './screems/Landing';
-import PointsMap from './screems/PointsMap';
-import PointDetails from './screems/PointDetails';
-import Register from './screems/Register';
+import Landing from './pages/Landing';
+import PointsMap from './pages/PointsMap';
+import PointDetails from './pages/PointDetails';
+import Register from './pages/Register';
 
 function Routes() {
   return (

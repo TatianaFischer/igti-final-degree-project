@@ -1,4 +1,5 @@
-import 'leaflet/dist/leaflet.css';
+import React, { useEffect } from 'react';
+
 import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import {
 } from '@react-google-maps/api';
 
 import '../styles/pages/pointsMap.scss';
+import api from '../services/api';
 
 const containerStyle = {
   width: '100vw',
@@ -45,10 +47,13 @@ const markersData = [
 ];
 
 const googleMapsAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-const onClicktoDetails = () => {
-  console.log('teste');
-};
+
 function PointsMap() {
+  useEffect(() => {
+    api.get('points').then(res => {
+      console.log(res);
+    });
+  }, []);
   return (
     <div id="page-map">
       <aside className="menuAside">
@@ -69,12 +74,7 @@ function PointsMap() {
             Selecione no mapa o restaurante e veja quais resíduos são coletados.
           </p>
         </header>
-        {/* <ul>
-          <h3>Quais residuos podem ser coletados?</h3>
-          <li>Orgânicos</li>
-          <li>Sólidos (papel, latas, plásticos...)</li>
-          <li>Eletrônicos</li>
-        </ul> */}
+
         <div>
           <label>Pesquise pelo endereço:</label>
           <div style={{ display: 'flex', color: 'black' }}>
@@ -101,7 +101,7 @@ function PointsMap() {
                         position={marker.position}
                         mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                       >
-                        <div className="overlayView" onClick={onClicktoDetails}>
+                        <div className="overlayView">
                           🡴<b> {marker.title}</b> ♻<p> {marker.description}</p>
                         </div>
                       </OverlayView>
