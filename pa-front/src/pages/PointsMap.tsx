@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,19 @@ import {
 import '../styles/pages/pointsMap.scss';
 import api from '../services/api';
 
+interface ResData {
+  about: string;
+  name: string;
+  wastes_types: string;
+  id: number;
+  images: string[];
+  instructions: string;
+  latitude: number;
+  longitude: number;
+  opening_hours: string;
+  others_actions: string;
+}
+
 const containerStyle = {
   width: '100vw',
   height: '100vh',
@@ -26,34 +39,23 @@ const center = {
   lng: -51.3172272,
 };
 
-const markersData = [
-  {
-    position: {
-      lat: -30.0229454,
-      lng: -51.1793927,
-    },
-
-    title: 'Casa',
-    description: 'Tampinha, pilhas, lâmpadas',
-  },
-  {
-    position: {
-      lat: -30.03102834,
-      lng: -51.2237419,
-    },
-    title: 'Santa Casa',
-    description: 'Orgânicos, papel, lata',
-  },
-];
-
 const googleMapsAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 function PointsMap() {
+  const [points, setPoints] = useState<ResData[]>([]);
+
   useEffect(() => {
     api.get('points').then(res => {
-      console.log(res);
+      const response: any = res.data;
+
+      setPoints(response);
     });
   }, []);
+
+  const teste = points.map(point => {
+    return point.name;
+  });
+
   return (
     <div id="page-map">
       <aside className="menuAside">
@@ -91,18 +93,21 @@ function PointsMap() {
       <LoadScript googleMapsApiKey={`${googleMapsAPIKey}`}>
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
           <></>
-          {markersData.map(marker => {
+          {points.map(item => {
             return (
               <>
                 <Link to="/restaurante/:id" className="pointDetailsLink">
-                  <Marker position={marker.position} title={marker.title}>
-                    {marker.title ? (
+                  <Marker
+                    position={{ lat: item.latitude, lng: item.longitude }}
+                    title={item.name}
+                  >
+                    {item.name ? (
                       <OverlayView
-                        position={marker.position}
+                        position={{ lat: item.latitude, lng: item.longitude }}
                         mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                       >
                         <div className="overlayView">
-                          🡴<b> {marker.title}</b> ♻<p> {marker.description}</p>
+                          🡴<b> {item.name}</b> ♻<p> {item.wastes_types}</p>
                         </div>
                       </OverlayView>
                     ) : null}
