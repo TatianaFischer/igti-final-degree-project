@@ -17,16 +17,11 @@ import '../styles/pages/pointsMap.scss';
 import api from '../services/api';
 
 interface ResData {
-  about: string;
   name: string;
   wastes_types: string;
   id: number;
-  images: string[];
-  instructions: string;
   latitude: number;
   longitude: number;
-  opening_hours: string;
-  others_actions: string;
 }
 
 const containerStyle = {
@@ -51,10 +46,6 @@ function PointsMap() {
       setPoints(response);
     });
   }, []);
-
-  const teste = points.map(point => {
-    return point.name;
-  });
 
   return (
     <div id="page-map">
@@ -95,25 +86,27 @@ function PointsMap() {
           <></>
           {points.map(item => {
             return (
-              <>
-                <Link to="/restaurante/:id" className="pointDetailsLink">
-                  <Marker
-                    position={{ lat: item.latitude, lng: item.longitude }}
-                    title={item.name}
-                  >
-                    {item.name ? (
-                      <OverlayView
-                        position={{ lat: item.latitude, lng: item.longitude }}
-                        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                      >
-                        <div className="overlayView">
-                          🡴<b> {item.name}</b> ♻<p> {item.wastes_types}</p>
-                        </div>
-                      </OverlayView>
-                    ) : null}
-                  </Marker>
-                </Link>
-              </>
+              <Link
+                to={`/restaurante/${item.id}`}
+                className="pointDetailsLink"
+                key={item.id}
+              >
+                <Marker
+                  position={{ lat: item.latitude, lng: item.longitude }}
+                  title={item.name}
+                >
+                  {item.name ? (
+                    <OverlayView
+                      position={{ lat: item.latitude, lng: item.longitude }}
+                      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                    >
+                      <div className="overlayView">
+                        🡴<b> {item.name}</b> ♻<p> {item.wastes_types}</p>
+                      </div>
+                    </OverlayView>
+                  ) : null}
+                </Marker>
+              </Link>
             );
           })}
         </GoogleMap>

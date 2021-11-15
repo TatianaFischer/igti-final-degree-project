@@ -1,14 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../images/logo.svg';
 import { FiClock, FiHome, FiArrowLeft } from 'react-icons/fi';
 
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 import '../styles/pages/pointDetails.scss';
+import api from '../services/api';
+
+interface PointDetails {
+  about: string;
+  name: string;
+  wastes_types: string;
+  images: Array<{
+    url: string;
+    id: number;
+  }>;
+  instructions: string;
+  latitude: number;
+  longitude: number;
+  opening_hours: string;
+  others_actions: string;
+}
+
+interface PointParams {
+  id: string;
+}
 
 export default function PointDetails() {
+  const params = useParams() as PointParams;
   const { goBack } = useHistory();
+  const [pointDetails, setPointDetails] = useState<PointDetails>();
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    api.get(`points/${params.id}`).then(res => {
+      const response: any = res.data;
+
+      setPointDetails(response);
+    });
+  }, [params.id]);
+
+  if (!pointDetails) {
+    return <p>Carregando...</p>;
+  }
 
   return (
     <div id="page-point-details">
@@ -37,79 +72,58 @@ export default function PointDetails() {
       <main>
         <div className="point-details">
           <img
-            src="https://images.unsplash.com/photo-1621496654772-c66c48290259?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-            alt="Bendito Orgânico"
+            src={pointDetails.images[activeImageIndex].url}
+            alt={pointDetails.name}
           />
 
           <div className="images">
-            <button className="active" type="button">
-              <img
-                src="https://images.unsplash.com/photo-1621496654772-c66c48290259?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                alt="Bendito Orgânico"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80"
-                alt="Bendito Orgânico"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://images.unsplash.com/photo-1552665312-09ff7932252e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80"
-                alt="Bendito Orgânico"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80"
-                alt="Bendito Orgânico"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://images.unsplash.com/photo-1581515286348-98549702050f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80"
-                alt="Bendito Orgânico"
-              />
-            </button>
-            <button type="button">
-              <img
-                src="https://images.unsplash.com/photo-1581515286348-98549702050f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80"
-                alt="Bendito Orgânico"
-              />
-            </button>
+            {pointDetails.images.map((image, index) => {
+              return (
+                <button
+                  className={activeImageIndex === index ? 'active' : ''}
+                  type="button"
+                  key={image.id}
+                  onClick={() => {
+                    setActiveImageIndex(index);
+                  }}
+                >
+                  <img
+                    src={image.url}
+                    alt={`Foto do estabelecimento ${pointDetails.name}`}
+                  />
+                </button>
+              );
+            })}
           </div>
 
           <div className="point-details-content">
-            <h1>Bendito Orgânico</h1>
-            <p>
-              Pilhas, lâmpadas, óleo de cozinha, tampinhas, papel, composteira
-              orgânica, orgânicos.
-            </p>
+            <h1>{pointDetails.name}</h1>
+            <p>{pointDetails.wastes_types}</p>
 
             <h2>Instruções</h2>
-            <p>
-              Traga seus resíduos orgânicos dentro de um potinho, temos uma
-              composteira grande para todos. Além disso, traga, sempre que
-              quiser suas pilhas, lâmpadas e óleo de cozinha para um correta
-              destinação, temos parceria com catadores.
-            </p>
+            <p>{pointDetails.instructions}</p>
 
             <h2>Sobre o Estabelecimento</h2>
-            <p>
-              Servimos comida de verdade caseiras e orgânicas. Nos siga no
-              Instagram @comidasaudavel ou entre em contato 5555555555.
-            </p>
+            <p>{pointDetails.about}</p>
 
             <h2>Outras ações sustentáveis</h2>
-            <p>Não usamos plásticos e comidas 100% orgânicas.</p>
-
+            <p>{pointDetails.others_actions}.</p>
+            <h2>Horário de funcionamento</h2>
             <div className="open-details">
               <div className="hour">
                 <FiClock size={32} color="#15B6D6" />
-                Segunda à Sexta <br />
-                das 10h às 18h
+                {pointDetails.opening_hours}
               </div>
+            </div>
+            <div className="address">
+              <h2>Endereço</h2>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://www.google.com/maps/dir/?api=1&destination=${pointDetails.latitude}, ${pointDetails.longitude}`}
+              >
+                Ver rotas no mapa
+              </a>
             </div>
           </div>
         </div>
