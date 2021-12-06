@@ -1,11 +1,13 @@
 #page-register {
   width: 100vw;
-  height: 100vh;
   display: flex;
+  background: #363636;
+  color: #363636;
 }
 .menuAside {
-  width: 350px;
-  background: #ff9696;
+  width: 300px;
+  background: #1c1c1c;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +23,8 @@
   .icon-menu {
     width: 120px;
     height: 60px;
-    background: #ff9696;
+    background: #1c1c1c;
+
     border-radius: 7px;
 
     display: flex;
@@ -40,28 +43,19 @@
 }
 .logoDescriptionAside {
   width: 440px;
-  background: #ff9696;
+  background: #1c1c1c;
   padding: 80px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
   header {
     display: grid;
     grid-template-rows: 1fr 1fr;
     height: 200px;
+    margin-top: 148px;
+
     img {
       width: 300px;
     }
 
-    p {
-      font-size: 1rem;
-    }
-
     h3 {
-      font-size: 1.2rem;
       font-weight: 700;
     }
   }
@@ -75,31 +69,12 @@
 }
 
 main {
-  ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-    margin: 5px;
-  }
-  ::-webkit-scrollbar {
-    width: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 2px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-    margin: 5px;
-  }
-
   form.register-form {
-    width: 60vw;
-    max-height: 90vh;
     background: #ffffff;
     padding: 64px 80px;
-    margin: 5% 8%;
 
     position: initial;
-    overflow-y: scroll;
+
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
@@ -117,7 +92,7 @@ main {
 
     font-size: 24px;
     line-height: 34px;
-    color: #5c8599;
+
     font-weight: 700;
     border-bottom: 1px solid #d3e2e5;
     margin-bottom: 40px;
@@ -134,14 +109,14 @@ main {
 
   form.register-form .input-block label {
     display: flex;
-    color: #8fa7b3;
+    color: #363636;
     margin-bottom: 8px;
     line-height: 24px;
   }
 
   form.register-form .input-block label span {
     font-size: 14px;
-    color: #8fa7b3;
+    color: #363636;
     margin-left: 24px;
     line-height: 24px;
   }
@@ -153,7 +128,6 @@ main {
     border: 1px solid #d3e2e5;
     border-radius: 7px;
     outline: none;
-    color: #5c8599;
   }
 
   form.register-form .input-block input {
@@ -189,14 +163,13 @@ main {
     height: 40px;
     background: #f5f8fa;
     border: 1px solid #d3e2e5;
-    color: #5c8599;
+
     cursor: pointer;
   }
 
   form.register-form .input-block .button-select button.active {
     background: #edfff6;
     border: 1px solid #a1e9c5;
-    color: #15d6a8;
   }
 
   form.register-form .input-block .button-select button:first-child {
@@ -210,14 +183,15 @@ main {
 
   form.register-form button.confirm-button {
     margin-top: 64px;
-
     width: 40%;
     height: 64px;
     border: 0;
+
     cursor: pointer;
-    background: #15d6a8;
+
+    background: #96feff;
     border-radius: 7px;
-    color: #ffffff;
+    color: #363636;
     font-weight: 800;
 
     display: flex;
@@ -227,11 +201,7 @@ main {
     transition: background-color 0.2s;
   }
 
-  form.register-form button.confirm-button svg {
-    margin-right: 16px;
-  }
-
   form.register-form button.confirm-button:hover {
-    background: #15d6a8;
+    background: #96feff;
   }
 }

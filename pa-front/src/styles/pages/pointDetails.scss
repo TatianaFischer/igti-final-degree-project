@@ -1,13 +1,14 @@
 #page-point-details {
   width: 100vw;
-  height: 100vh;
+
   display: flex;
-  overflow-y: hidden;
+
+  color: #363636;
 }
 
 .menuAside {
-  width: 350px;
-  background: #ff9696;
+  width: 300px;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +24,7 @@
   .icon-menu {
     width: 120px;
     height: 60px;
-    background: #ff9696;
+
     border-radius: 7px;
 
     display: flex;
@@ -42,28 +43,23 @@
 }
 .logoDescriptionAside {
   width: 440px;
-  background: #ff9696;
   padding: 80px;
+  color: #ffffff;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 
   header {
     display: grid;
     grid-template-rows: 1fr 1fr;
     height: 200px;
+    margin-top: 100px;
     img {
       width: 300px;
     }
 
-    p {
-      font-size: 1rem;
-    }
-
     h3 {
-      font-size: 1.2rem;
       font-weight: 700;
     }
   }
@@ -77,33 +73,12 @@
 }
 main {
   flex: 1;
-  ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-    margin: 5px;
-  }
-  ::-webkit-scrollbar {
-    width: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 2px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-    margin: 5px;
-  }
 }
 
 .point-details {
-  width: 60vw;
-  max-height: 90vh;
   background: #ffffff;
-  padding: 64px 80px;
-  margin: 5% 8%;
-
   position: initial;
-  overflow-y: scroll;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
   border-radius: 2px;
 }
 
@@ -126,7 +101,7 @@ main {
   height: 88px;
   background: none;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 5px;
   overflow: hidden;
   outline: none;
 
@@ -141,6 +116,9 @@ main {
   width: 100%;
   height: 88px;
   object-fit: cover;
+  &:hover {
+    filter: brightness(0.9);
+  }
 }
 
 .point-details .point-details-content {
@@ -148,16 +126,12 @@ main {
 }
 
 .point-details .point-details-content h1 {
-  color: #4d6f80;
-  font-size: 54px;
   line-height: 54px;
   margin-bottom: 8px;
 }
 
 .point-details .point-details-content p {
   line-height: 28px;
-  color: #5c8599;
-  margin-top: 24px;
 }
 
 .point-details .point-details-content .map-container {
@@ -192,9 +166,7 @@ main {
 }
 
 .point-details .point-details-content h2 {
-  font-size: 36px;
   line-height: 46px;
-  color: #4d6f80;
 }
 
 .point-details .point-details-content .open-details {
@@ -219,7 +191,7 @@ main {
 .point-details .point-details-content .open-details div.hour {
   background: linear-gradient(149.97deg, #e6f7fb 8.13%, #ffffff 92.67%);
   border: 1px solid #b3dae2;
-  color: #5c8599;
+  color: #363636;
 }
 
 .point-details .point-details-content .open-details div.open-on-weekends {
@@ -235,9 +207,10 @@ main {
   height: 64px;
   border: 0;
   cursor: pointer;
-  background: #3cdc8c;
+  background: #96feff;
+  color: black;
   border-radius: 20px;
-  color: #ffffff;
+
   font-weight: 800;
 
   display: flex;
@@ -252,10 +225,10 @@ main {
 }
 
 .point-details .point-details-content button.contact-button:hover {
-  background: #36cf82;
+  background: #96feff;
+  color: black;
 }
 
 .point-details .point-details-content .address {
   margin-top: 24px;
-  color: #4d6f80;
 }

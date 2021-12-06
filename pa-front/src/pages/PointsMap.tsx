@@ -30,8 +30,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -30.1087957,
-  lng: -51.3172272,
+  lat: -30.0628595,
+  lng: -51.1179392,
 };
 
 const googleMapsAPIKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -82,7 +82,7 @@ function PointsMap() {
       </aside>
 
       <LoadScript googleMapsApiKey={`${googleMapsAPIKey}`}>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
           <></>
           {points.map(item => {
             return (

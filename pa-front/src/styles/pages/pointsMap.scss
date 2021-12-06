@@ -7,7 +7,7 @@
 
   .menuAside {
     width: 270px;
-    background: #ff9696;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
     .icon-menu {
       width: 120px;
       height: 60px;
-      background: #ff9696;
+
       border-radius: 7px;
 
       display: flex;
@@ -37,7 +37,7 @@
   }
   .logoDescriptionAside {
     width: 440px;
-    background: #ff9696;
+
     padding: 80px;
 
     display: flex;
@@ -49,6 +49,7 @@
       display: grid;
       grid-template-rows: 1fr 1fr;
       height: 200px;
+      margin-top: 100px;
       img {
         width: 300px;
       }
@@ -88,6 +89,10 @@
     }
 
     p {
+      margin: 5px 0;
+      font-size: 0.5rem;
+      color: black;
+      font-weight: bold;
       overflow: hidden;
       text-overflow: ellipsis;
     }
