@@ -37,6 +37,7 @@ The project was developed using this technologies:
 - [TypeScript](https://www.typescriptlang.org/)
 - [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 - [SASS](https://sass-lang.com/)
+- [Bootstrap](https://getbootstrap.com/)
 - [Google Maps API](https://mapsplatform.google.com/)
 - [Axios](https://axios-http.com/docs/intro)
 - [Node.js](https://nodejs.org/en/)
